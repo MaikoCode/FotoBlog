@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+    <p><a href="{% url 'edit_blog' blog.id %}">Modifier le billet</a></p>
     <h2>{{ blog.title }}</h2>
     <img src="{{ blog.photo.image.url }}">
     <p>{{ blog.photo.caption }}</p>
