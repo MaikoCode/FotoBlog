@@ -1,12 +1,19 @@
 from django.conf import settings
 from django.db import models
+from PIL import Image
 
 
 class Photo(models.Model):
+    IMAGE_MAX_SIZE = (800, 800)
     image = models.ImageField(verbose_name='image')
     caption = models.CharField(max_length=128, blank=True, verbose_name='légende')
     uploader = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
+    
+    def resize_image(self):
+        image = Image.open(self.image)
+        image.thumbnail(self.IMAGE_MAX_SIZE)
+        image.save(self.image.path)
 
 
 class Blog(models.Model):
