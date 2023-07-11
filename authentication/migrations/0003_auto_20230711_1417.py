@@ -6,7 +6,7 @@ from django.db import migrations
 def create_groups(apps, schema_migration):
     User = apps.get_model('authentication', 'User')
     Group = apps.get_model('auth', 'Group')
-    Permission = apps.get_mode('auth', 'Permission')
+    Permission = apps.get_model('auth', 'Permission')
     
     add_photo = Permission.objects.get(codename='add_photo')
     change_photo = Permission.objects.get(codename='change_photo')
