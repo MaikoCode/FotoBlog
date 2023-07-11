@@ -13,7 +13,7 @@ urlpatterns = [
     path('', LoginView.as_view(
         template_name='authentication/login.html',
         redirect_authenticated_user=True),
-         name='login'),
+         name='login'), # On fait la connexion au login grace à une vue generique
     path('logout/', LogoutView.as_view(), name='logout'),
     path('change-password/', PasswordChangeView.as_view(
         template_name='authentication/password_change_form.html'),
